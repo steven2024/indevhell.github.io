@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+@font-face {
+    font-family: mojangles;
+    src: url("files/mojangles.ttf");
+}
+
+:root {
+    --background-light: white;
+    --background-dark: #202020;
+    --background: var(--background-light);
+
+    --background-darker-light: #eee;
+    --background-darker-dark: #181818;
+    --background-darker: var(--background-darker-light);
+
+    --text-light: #333;
+    --text-dark: lightgrey;
+    --text: var(--text-light);
+
+    --border-light: #aaa;
+    --border-dark: #555;
+    --border: var(--border-light);
+
+    --accent-text-light: #091;
+    --accent-text-dark: #5b7;
+    --accent-text: var(--accent-text-light);
+
+    --accent-background: #384;
+    --accent-contrast: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: var(--background-dark);
+        --background-darker: var(--background-darker-dark);
+        --text: var(--text-dark);
+        --border: var(--border-dark);
+        --accent-text: var(--accent-text-dark);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: "PT Sans", sans-serif;
+    margin: 0 auto;
+    max-width: 70em;
+    background-image: url("files/stone.png");
+    background-size: 48px;
+    image-rendering: pixelated;
+    text-align: center;
+}
+
+h2, .btn {
+    font-family: mojangles; /* Minecraft font for titles and buttons */
+}   
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 2em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--accent-text);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+small {
+    font-weight: 400;
+    font-size: small;
+    text-align: center;
+    display: block;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    left: 0;
+    background: #5d4828 url("files/dirt.png") repeat-x;
+    background-size: 48px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: block;
+    margin: 80px auto 20px;
+    width: 512px;
+    height: 128px;
+}
+
+nav .btn {
+    width: 155px;
+    height: 35px;
+    margin: 0 5px;
+    color: #e0e0e0;
+    font-size: 14px;
+    text-shadow: 2px 2px #383838;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+    background-image: url("files/button.png");
+    background-size: 155px 35px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-family: mojangles;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.btn:hover {
+    background-image: url("files/button_hover.png");
+    color: #ffffa0;
+}
+
+.wrap {
+    color: white;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+hr {
+    width: 100%;
+}
+
+.footer {
+    color: #e0e0e0;
+    font-size: 14px;
+    text-shadow: 2px 2px #383838;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer a,
+.footer a:visited,
+.announcement a,
+.announcement a:visited {
+    color: rgb(202, 202, 202);
+}
+
+.footer a:hover {
+    color: #ffffa0;
+}
+
+.minecraft-button {
+    width: 155px;
+    height: 35px;
+    display: block;
+    color: #e0e0e0;
+    font-size: 14px;
+    text-shadow: 2px 2px #383838;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+    background-image: url("files/button.png");
+    background-size: 155px 35px;
+    background-repeat: no-repeat;
+    margin: 0.5em auto;
+    font-family: mojangles;
+}
+
+.minecraft-button:hover {
+    background-image: url("files/button_hover.png");
+    color: #ffffa0;
+}
+
+.main-content {
+    width: 100%;
+    text-align: left;
+}
+
+.home-page .main-content {
+    width: 60%;
+}
+
+.home-page .sidebar {
+    width: 30%;
+    margin-left: 2em;
+}
+
+.sidebar img {
+    width: 100%;
+}
+
+.home-page .vertical-separator {
+    border-left: 2px solid var(--border);
+    height: 100%;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.wiki-section {
+    margin-bottom: 1em;
+}
+
+.wiki-section h3 {
+    font-size: 1.2em;
+    margin-top: 1em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+}
+
+.header-title {
+    margin-bottom: 1em;
+}
+
+.sidebar-content {
+    margin-top: 1em;
+    margin-left: 1em;
+}
