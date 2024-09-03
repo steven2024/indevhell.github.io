@@ -1,84 +1,897 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Wiki - Forever Indev / Minecraft Fork</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="btn top">Home</a>
-            <a href="downloads.html" class="btn top">Downloads</a>
-            <a href="changelogs.html" class="btn top">Changelogs</a>
-            <a href="wiki.html" class="btn top">Wiki</a>
-            <a href="extras.html" class="btn top">Extras</a>
-            <a href="gallery.html" class="btn top">Gallery</a>
-        </div>
-    </nav>
-    <img class="logo" src="screenshots/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Indev Wiki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
 
-    <div class="wrap">
-        <div id="content" style="display: flex; gap: 1em;">
-            <div class="main-content">
-                <main>
-                    <h2 style="margin-top: 0;">Wiki</h2>
-                    <div class="wiki-section">
-                        <h3>Getting Started</h3>
-                        <p>Welcome to the Forever Indev Wiki. Here you can find detailed information about the game mechanics, features, and tips for enhancing your gameplay experience.</p>
-                    </div>
-                    <div class="wiki-section">
-                        <h3>Crafting Recipes</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1em;">
-                            <div>
-                                <img src="screenshots/recipe_mudbrick.png">
-                                <small>Mud Brick</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_cobbledbrick.png">
-                                <small>Cobbled Brick</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_polishedblock.png">
-                                <small>Polished Block</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_polishedslab.png">
-                                <small>Polished Slab</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_polishedtiles.png">
-                                <small>Polished Tiles</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_coallamp.png">
-                                <small>Coal Lamp</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_sugarbeet.png">
-                                <small>Sugar Beet (not crafted; found by hoeing grass)</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_sugar.png">
-                                <small>Sugar</small>
-                            </div>
-                            <div>
-                                <img src="screenshots/recipe_applepie.png">
-                                <small>Apple Pie (order is important)</small>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        aside {
+            width: 200px;
+            background: #ddd;
+            padding: 10px;
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        main {
+            flex: 1;
+            padding: 10px;
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        .wiki-page {
+            display: none;
+        }
+
+        .wiki-page.active {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box h3 {
+            margin-top: 0;
+        }
+
+        .sidebox {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebox h4 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Forever Indev Wiki</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('overview')">Overview</a></li>
+                <li><a href="#" onclick="showPage('blocks')">Blocks</a></li>
+                <li><a href="#" onclick="showPage('items')">Items</a></li>
+                <li><a href="#" onclick="showPage('commands')">Commands</a></li>
+                <li><a href="#" onclick="showPage('features')">Features</a></li>
+                <li><a href="#" onclick="showPage('mobs')">Mobs</a></li>
+                <li><a href="#" onclick="showPage('tips-tricks')">Tips & Tricks</a></li>    
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside>
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#" onclick="showPage('blocks')">Blocks</a></li>
+                <li><a href="#" onclick="showPage('items')">Items</a></li>
+                <li><a href="#" onclick="showPage('commands')">Commands</a></li>
+                <li><a href="#" onclick="showPage('features')">Features</a></li>
+                <li><a href="#" onclick="showPage('mobs')">Mobs</a></li>
+                <li><a href="#" onclick="showPage('tips-tricks')">Tips & Tricks</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <!-- Search Box -->
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search..." oninput="searchContent()">
             </div>
-            <div class="vertical-separator"></div>
-            <aside class="sidebar">
-                <div class="sidebar-content">
-                    <!-- Sidebar content goes here (if any) -->
+
+            <!-- Main Pages -->
+            <!-- Overview Page -->
+            <div id="overview" class="wiki-page active">
+                <div class="content-box">
+                    <h2>Forever Indev: Overview</h2>
+                    <p><strong>What is it?</strong><br>
+                        Forever Indev is a fork of the last version of Minecraft Indev. It adds RPG elements and has a medieval fantasy style. Made with RetroMCP-Java, this version is still in development, so there may be bugs.
+                    </p>
+                    <h3>Main Menu Changes</h3>
+                    <p><strong>What's New?</strong></p>
+                    <ul>
+                        <li><strong>Game Title:</strong> The main menu now displays "Forever Indev" under the Minecraft logo, indicating this special version that's still being updated.</li>
+                        <li><strong>Current Time Display:</strong> The main menu shows the current date and time in the format "Month day, Year @ time" (e.g., "September 2, 2024 @ 10:15 AM"). This format is consistent across the game, including on the Top Scores screen.</li>
+                        <li><strong>Top Scores Button:</strong> A new "Top Scores" button has been added to the main menu. Clicking this button opens a screen that displays the top 10 high scores, allowing players to compare their achievements.</li>
+                        <li><strong>Layout Adjustments:</strong> The main menu layout has been tweaked for better readability. Fonts and element positions have been adjusted for a cleaner look.</li>
+                    </ul>
+                    <h3>New Splash Texts</h3>
+                    <p>Here’s a list of all the new splash texts added to the game, along with what they reference:</p>
+                    <table border="1">
+                        <thead>
+                          <tr>
+                            <th>Splash Text</th>
+                            <th>Reference</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>"Not-quite indev!"</td>
+                            <td>A nod to the fact that this version is based on Indev but has many new features.</td>
+                          </tr>
+                          <tr>
+                            <td>"Chests on the glass door!"</td>
+                            <td>A fun and random phrase, fitting Minecraft’s style of quirky splashes.</td>
+                          </tr>
+                          <tr>
+                            <td>"NP is not in P!"</td>
+                            <td>A playful reminder that "NP" (No Problem) isn’t the same as "P" (Player).</td>
+                          </tr>
+                          <tr>
+                            <td>"The blue-twintailed girl is right!"</td>
+                            <td>Refers to a character from anime or fan culture with blue twintails, popular within certain communities.</td>
+                          </tr>
+                          <tr>
+                            <td>"Trust the blue-twintailed girl!"</td>
+                            <td>Another reference to the same character, emphasizing the cultural following.</td>
+                          </tr>
+                          <tr>
+                            <td>"In development hell, did I development sin?"</td>
+                            <td>Speaks to the challenges and frustrations of game development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Bubbles from the gum machine!"</td>
+                            <td>A random, lighthearted phrase, continuing the tradition of quirky Minecraft splashes.</td>
+                          </tr>
+                          <tr>
+                            <td>"[INSERT SPLASH HERE]"</td>
+                            <td>A joke about placeholders and unfinished features.</td>
+                          </tr>
+                          <tr>
+                            <td>"Full-stop!"</td>
+                            <td>A blunt and straightforward statement, playing on the idea of abrupt endings.</td>
+                          </tr>
+                          <tr>
+                            <td>"[EXTREMELY LOUD INCORRECT BUZZER]"</td>
+                            <td>Mimics the sound of a wrong-answer buzzer from game shows.</td>
+                          </tr>
+                          <tr>
+                            <td>"Bricks in the wall!"</td>
+                            <td>Could be a reference to the Pink Floyd song "Another Brick in the Wall" or just a comment on Minecraft’s building mechanics.</td>
+                          </tr>
+                          <tr>
+                            <td>"Catch the falling stars!"</td>
+                            <td>A whimsical phrase, possibly hinting at something special in the game.</td>
+                          </tr>
+                          <tr>
+                            <td>"Syntax error at line 42!"</td>
+                            <td>Refers to common coding errors that developers encounter.</td>
+                          </tr>
+                          <tr>
+                            <td>"Glitches in the matrix!"</td>
+                            <td>A reference to The Matrix movie and the idea of things going wrong in a digital world.</td>
+                          </tr>
+                          <tr>
+                            <td>"Null pointer exception!"</td>
+                            <td>Another coding reference, where a program tries to use non-existent data.</td>
+                          </tr>
+                          <tr>
+                            <td>"Endless loops ahead!"</td>
+                            <td>Refers to loops in coding that never stop running, a common issue in development.</td>
+                          </tr>
+                          <tr>
+                            <td>"In the rabbit hole!"</td>
+                            <td>A nod to Alice in Wonderland and going deeper into complex issues.</td>
+                          </tr>
+                          <tr>
+                            <td>"Blue screen of life!"</td>
+                            <td>A twist on the infamous "blue screen of death" error in computers.</td>
+                          </tr>
+                          <tr>
+                            <td>"Assembly required!"</td>
+                            <td>Common phrase for products needing to be put together, also fitting Minecraft’s crafting mechanics.</td>
+                          </tr>
+                          <tr>
+                            <td>"Pixels and polygons!"</td>
+                            <td>Describes the basic elements of video game graphics.</td>
+                          </tr>
+                          <tr>
+                            <td>"Legacy code detected!"</td>
+                            <td>Refers to old code that’s still in use, sometimes causing issues in development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Unicorns in disguise!"</td>
+                            <td>Another fun, random splash, adding to Minecraft’s quirky style.</td>
+                          </tr>
+                          <tr>
+                            <td>"404: Splash not found!"</td>
+                            <td>A tech joke about the "404 error" when a webpage isn’t found.</td>
+                          </tr>
+                          <tr>
+                            <td>"Press F to pay respects!"</td>
+                            <td>A reference to the meme from Call of Duty: Advanced Warfare.</td>
+                          </tr>
+                          <tr>
+                            <td>"Welcome to Hell!"</td>
+                            <td>Refers to the Hell world type from Indev, now featured in Forever Indev.</td>
+                          </tr>
+                          <tr>
+                            <td>"Steve? Is that you, Minecraft Steve?"</td>
+                            <td>A playful reference to being called "Steve" because of the username "steve2024."</td>
+                          </tr>
+                          <tr>
+                            <td>"Hell level? More like in development hell!"</td>
+                            <td>Combines the Hell world type with the struggles of game development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Creepers gonna creep!"</td>
+                            <td>Refers to the sneaky nature of Creepers in Minecraft.</td>
+                          </tr>
+                          <tr>
+                            <td>"You are the chosen one!"</td>
+                            <td>A phrase from many stories and games, adding a dramatic touch.</td>
+                          </tr>
+                          <tr>
+                            <td>"Loading... please wait!"</td>
+                            <td>A familiar message when something’s taking a while to load.</td>
+                          </tr>
+                          <tr>
+                            <td>"Did you bring a sword?"</td>
+                            <td>A reminder to always be prepared, especially in a game with dangers.</td>
+                          </tr>
+                          <tr>
+                            <td>"Save early, save often!"</td>
+                            <td>Good advice for any game to avoid losing progress.</td>
+                          </tr>
+                          <tr>
+                            <td>"Not-quite reality!"</td>
+                            <td>A reminder that the game world is different from real life.</td>
+                          </tr>
+                          <tr>
+                            <td>"Get tf outta my fork, Herobrine!"</td>
+                            <td>A mix of frustration and humor, bringing up the old Herobrine legend.</td>
+                          </tr>
+                          <tr>
+                            <td>"Watch out for Herobrine! He’s been known to mess with devs!"</td>
+                            <td>Another reference to the Herobrine myth, joking about him causing problems in development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Is this going to be Forever Indev or just indefinitely on hold?"</td>
+                            <td>A joke about the project potentially never being finished, a common worry in game development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Under construction!"</td>
+                            <td>A simple statement that things are still being worked on.</td>
+                          </tr>
+                          <tr>
+                            <td>"Stealthy creepers!"</td>
+                            <td>Highlighting the sneaky behavior of Creepers in the game.</td>
+                          </tr>
+                          <tr>
+                            <td>"Save your progress!"</td>
+                            <td>Another reminder to save your game to avoid losing progress.</td>
+                          </tr>
+                          <tr>
+                            <td>"Less is more!"</td>
+                            <td>A common saying, often used to suggest that simplicity can be better.</td>
+                          </tr>
+                          <tr>
+                            <td>"Made with <3"</td>
+                            <td>A cute way of saying the game was made with love.</td>
+                          </tr>
+                          <tr>
+                            <td>"Made with the help of RetroMCP-Java"</td>
+                            <td>Giving credit to the tools used in development.</td>
+                          </tr>
+                          <tr>
+                            <td>"Wait, who is that in the fog?"</td>
+                            <td>A nod to Herobrine, who was rumored to appear in the fog.</td>
+                          </tr>
+                        </tbody>
+                      </table>                      
                 </div>
-            </aside>
-        </div>
+            </div>
+
+            <!-- Blocks Category Page -->
+            <div id="blocks" class="wiki-page">
+                <div class="content-box">
+                    <h2>Blocks</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('block-wet-sand')">Wet Sand</a></li>
+                        <li><a href="#" onclick="showPage('block-compressed-dirt')">Compressed Dirt</a></li>
+                        <li><a href="#" onclick="showPage('block-packed-gravel')">Packed Gravel</a></li>
+                        <li><a href="#" onclick="showPage('block-cobbled-stone')">Cobbled Stone</a></li>
+                        <li><a href="#" onclick="showPage('block-clay-bricks')">Clay Bricks</a></li>
+                        <li><a href="#" onclick="showPage('block-tinted-glass')">Tinted Glass</a></li>
+                        <li><a href="#" onclick="showPage('block-mossy-cobbled-stone')">Mossy Cobbled Stone</a></li>
+                        <li><a href="#" onclick="showPage('block-mossy-stone')">Mossy Stone</a></li>
+                        <li><a href="#" onclick="showPage('block-wooden-paver')">Wooden Paver</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block Detail Pages -->
+            <div id="block-wet-sand" class="wiki-page">
+                <div class="content-box">
+                    <h2>Wet Sand</h2>
+                    <p><strong>ID:</strong> 76<br>
+                        <strong>Texture:</strong> 109<br>
+                        <strong>Material:</strong> Sand<br>
+                        <strong>Description:</strong> Wet Sand is a variant of the standard sand block, characterized by its delayed fall behavior. When placed, Wet Sand exhibits a slight delay before it begins to fall, mimicking the denser, more cohesive nature of damp sand. This block is particularly unique due to its interaction with water, which triggers its delayed falling mechanic.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-compressed-dirt" class="wiki-page">
+                <div class="content-box">
+                    <h2>Compressed Dirt</h2>
+                    <p><strong>ID:</strong> 70<br>
+                        <strong>Texture:</strong> 103<br>
+                        <strong>Material:</strong> Ground<br>
+                        <strong>Description:</strong> Compressed Dirt is a denser form of regular dirt. It features increased hardness and resistance, making it a more durable building material. This block provides a sturdier alternative to standard dirt blocks, with a darker texture to indicate its compressed nature.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-packed-gravel" class="wiki-page">
+                <div class="content-box">
+                    <h2>Packed Gravel</h2>
+                    <p><strong>ID:</strong> 69<br>
+                        <strong>Texture:</strong> 102<br>
+                        <strong>Material:</strong> Ground<br>
+                        <strong>Description:</strong> Packed Gravel is a more compact version of regular gravel. It is slightly harder and more resistant than its loose counterpart, with a unique texture that reflects its tightly packed particles. This block maintains the characteristic falling behavior of gravel but does not produce flint when broken.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-cobbled-stone" class="wiki-page">
+                <div class="content-box">
+                    <h2>Cobbled Stone</h2>
+                    <p><strong>ID:</strong> 68<br>
+                        <strong>Texture:</strong> 101<br>
+                        <strong>Material:</strong> Rock<br>
+                        <strong>Description:</strong> Cobbled Stone is a rugged variant of regular stone. Unlike traditional cobblestone, Cobbled Stone has a more textured and uneven surface, giving it a distinctive appearance. It maintains the same durability as regular stone, making it suitable for heavy-duty construction.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-clay-bricks" class="wiki-page">
+                <div class="content-box">
+                    <h2>Clay Bricks</h2>
+                    <p><strong>ID:</strong> 71<br>
+                        <strong>Texture:</strong> 104<br>
+                        <strong>Material:</strong> Rock<br>
+                        <strong>Description:</strong> Clay Bricks are created from fired clay and offer a more refined building block compared to mud bricks. This block features a classic brick texture with a reddish hue, characteristic of traditional brick constructions. Clay Bricks are durable and resistant, making them ideal for building robust structures.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-tinted-glass" class="wiki-page">
+                <div class="content-box">
+                    <h2>Tinted Glass</h2>
+                    <p><strong>ID:</strong> 72<br>
+                        <strong>Texture:</strong> 105<br>
+                        <strong>Material:</strong> Glass<br>
+                        <strong>Description:</strong> Tinted Glass is a variation of the standard glass block that features a darker, semi-opaque texture. It provides less transparency, offering privacy while still allowing some light to pass through.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-mossy-cobbled-stone" class="wiki-page">
+                <div class="content-box">
+                    <h2>Mossy Cobbled Stone</h2>
+                    <p><strong>ID:</strong> 73<br>
+                        <strong>Texture:</strong> 106<br>
+                        <strong>Material:</strong> Rock<br>
+                        <strong>Description:</strong> Mossy Cobbled Stone is a variant of cobbled stone that has become overgrown with moss. This block features a rough, weathered texture with patches of green moss, giving it an aged appearance. It is commonly used in structures meant to look ancient or abandoned.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-mossy-stone" class="wiki-page">
+                <div class="content-box">
+                    <h2>Mossy Stone</h2>
+                    <p><strong>ID:</strong> 74<br>
+                        <strong>Texture:</strong> 107<br>
+                        <strong>Material:</strong> Rock<br>
+                        <strong>Description:</strong> Mossy Stone is a standard stone block that has been overtaken by moss growth. It shares similar properties with regular stone but features a greenish overlay, indicating moss coverage. This block is found in the Indev House or Castles.
+                    </p>
+                </div>
+            </div>
+
+            <div id="block-wooden-paver" class="wiki-page">
+                <div class="content-box">
+                    <h2>Wooden Paver</h2>
+                    <p><strong>ID:</strong> 75<br>
+                        <strong>Texture:</strong> 108<br>
+                        <strong>Material:</strong> Wood<br>
+                        <strong>Description:</strong> Wooden Pavers are a type of wooden block designed for use in floors. These blocks feature a smooth, finished wood texture, making them ideal for decorative flooring.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Items Category Page -->
+            <div id="items" class="wiki-page">
+                <div class="content-box">
+                    <h2>Items</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('item-battle-axe')">Battle Axe</a></li>
+                        <li><a href="#" onclick="showPage('item-shield')">Shields</a></li>
+                        <li><a href="#" onclick="showPage('item-quiver')">Quiver</a></li>
+                        <li><a href="#" onclick="showPage('item-bow')">Bow</a></li>
+                        <li><a href="#" onclick="showPage('item-arrows')">Arrows</a></li>
+                        <li><a href="#" onclick="showPage('item-cloth-shield')">Cloth-Covered Shields</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item Detail Pages -->
+            <div id="item-battle-axe" class="wiki-page">
+                <div class="content-box">
+                    <h2>Battle Axe</h2>
+                    <p><strong>ID Range:</strong> 5 (Wood) to 29 (Diamond)<br>
+                        <strong>Description:</strong> The Battle Axe is a powerful melee weapon, where the texture was first introduced in an earlier version of Minecraft Indev when axes were first added to the game. This weapon type is distinguished by its heavy damage output and more expensive recipe compared to standard axes. Each tier (Wood, Stone, Iron, Gold, Diamond) features increasing damage and durability. The Battle Axe offers players a strong alternative to swords in combat.
+                    </p>
+                    <h3>Fun Fact:</h3>
+                    <p>The Battle Axe in Forever Indev is directly inspired by an earlier version of Minecraft Indev where the axe had a different texture.</p>
+                </div>
+            </div>
+
+            <div id="item-shield" class="wiki-page">
+                <div class="content-box">
+                    <h2>Shields</h2>
+                    <p><strong>ID Range:</strong> 73 (Iron Shield) to 89 (White Cloth-Covered Shield)<br>
+                        <strong>Description:</strong> Shields are defensive items that can be equipped in the player’s off-hand. They provide a chance to block incoming damage, with the chance depending on the shield type. The Iron Shield is a straightforward, metal shield, while the Cloth-Covered Shields feature various colors, adding customization options for players. The texture for the Iron Shield is directly from Notch's old game, Legend of the Chambered. Each cloth-covered variant is essentially an iron shield wrapped in colored cloth, providing both aesthetic variety and functional protection.
+                    </p>
+                    <h3>Fun Fact:</h3>
+                    <p>The texture for the Iron Shield is directly from one of Notch's previous games, Legend of the Chambered.</p>
+                </div>
+            </div>
+
+            <div id="item-quiver" class="wiki-page">
+                <div class="content-box">
+                    <h2>Quiver</h2>
+                    <p><strong>ID:</strong> 48<br>
+                        <strong>Description:</strong> The Quiver is an item used to store arrows, allowing players to carry more ammunition without occupying inventory space. It features a unique interface in the inventory screen, where it automatically draws arrows from a designated slot. The Quiver icon displays the fullness of the quiver, with visual indicators for empty, half-full, and full states. This item is particularly useful for ranged combat, enabling quicker access to arrows during combat.
+                    </p>
+                </div>
+            </div>
+
+            <div id="item-bow" class="wiki-page">
+                <div class="content-box">
+                    <h2>Bow</h2>
+                    <p><strong>ID:</strong> 46<br>
+                        <strong>Description:</strong> The Bow is a ranged weapon used to shoot arrows. It is one of the primary tools for ranged combat in Forever Indev. The bow has a cooldown period between shots, which can be decreased with the quickshot enchant. The bow is compatible with the quiver, allowing for seamless reloading of arrows during use.
+                    </p>
+                </div>
+            </div>
+
+            <div id="item-arrows" class="wiki-page">
+                <div class="content-box">
+                    <h2>Arrows</h2>
+                    <p><strong>ID:</strong> 47<br>
+                        <strong>Description:</strong> Arrows are the ammunition used with the Bow. They are a critical resource for any player relying on ranged combat. Arrows can be stored in the Quiver for efficient inventory management and quick access during fights.
+                    </p>
+                </div>
+            </div>
+
+            <div id="item-cloth-shield" class="wiki-page">
+                <div class="content-box">
+                    <h2>Cloth-Covered Shields</h2>
+                    <p><strong>ID Range:</strong> 74 (Red) to 89 (White)<br>
+                        <strong>Description:</strong> These are variants of the standard Iron Shield, covered with colored cloth. Each color corresponds to one of the available cloth types, offering players the ability to match their shield to their armor or personal style. The cloth-covered shields function identically to the Iron Shield but provide a customizable look.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Commands Category Page -->
+            <div id="commands" class="wiki-page">
+                <div class="content-box">
+                    <h2>Commands</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('command-give')">/give</a></li>
+                        <li><a href="#" onclick="showPage('command-gamemode')">/gamemode</a></li>
+                        <li><a href="#" onclick="showPage('command-enchant')">/enchant</a></li>
+                        <li><a href="#" onclick="showPage('command-spawn')">/spawn</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Command Detail Pages -->
+            <div id="command-give" class="wiki-page">
+                <div class="content-box">
+                    <h2>/give</h2>
+                    <p><strong>Command Name:</strong> /give<br>
+                        <strong>Description:</strong> The /give command grants the player the specified item directly into their inventory. This is particularly useful for testing or quickly accessing items without needing to craft or find them.
+                    </p>
+                    <h3>Usage:</h3>
+                    <p><strong>Basic Format:</strong> /give [item ID] [opt. item amount]</p>
+                    <ul>
+                        <li><strong>[item ID]:</strong> The ID of the item you want to give.</li>
+                        <li><strong>[opt. item amount]:</strong> The quantity of the item (optional, defaults to 1 if not specified).</li>
+                    </ul>
+                    <p><strong>Example:</strong> /give 276 64 - This command would give the player 64 Diamond Swords (ID 276).</p>
+                    <h3>Notes:</h3>
+                    <p>Ensure that the item ID is correct, as invalid IDs will result in an error message. The item amount is optional; if not specified, it defaults to 1.</p>
+                    <h3>Common Issues:</h3>
+                    <p>If an invalid item ID is provided, the command will not work, and an error message will be shown.</p>
+                </div>
+            </div>
+
+            <div id="command-gamemode" class="wiki-page">
+                <div class="content-box">
+                    <h2>/gamemode</h2>
+                    <p><strong>Command Name:</strong> /gamemode<br>
+                        <strong>Description:</strong> The /gamemode command allows players to switch between Creative and Survival modes, offering flexibility in how they experience the game.
+                    </p>
+                    <h3>Usage:</h3>
+                    <p><strong>Basic Format:</strong> /gamemode [0/s/survival=Survival, 1/c/creative=Creative]</p>
+                    <ul>
+                        <li><strong>[0/s/survival]:</strong> Switches to Survival mode.</li>
+                        <li><strong>[1/c/creative]:</strong> Switches to Creative mode.</li>
+                    </ul>
+                    <p><strong>Example:</strong> /gamemode 1 - This would change the player's mode to Creative.</p>
+                    <h3>Notes:</h3>
+                    <p>The command is straightforward and does not require additional parameters. Players can use aliases (0/s for Survival and 1/c for Creative) for convenience.</p>
+                    <h3>Common Issues:</h3>
+                    <p>If an invalid parameter is entered, an error message will guide the player to use the correct format.</p>
+                </div>
+            </div>
+
+            <div id="command-enchant" class="wiki-page">
+                <div class="content-box">
+                    <h2>/enchant</h2>
+                    <p><strong>Command Name:</strong> /enchant<br>
+                        <strong>Description:</strong> The /enchant command allows players to add enchantments to the item they are currently holding. This is useful for enhancing items with special abilities without needing an enchantment table.
+                    </p>
+                    <h3>Usage:</h3>
+                    <p><strong>Basic Format:</strong> /enchant [enchant type] [opt. enchant level]</p>
+                    <ul>
+                        <li><strong>[enchant type]:</strong> The ID of the enchantment you want to apply.</li>
+                        <li><strong>[opt. enchant level]:</strong> The level of the enchantment (optional, defaults to 1 if not specified).</li>
+                    </ul>
+                    <p><strong>Example:</strong> /enchant 1 3 - This would add a level 3 enchantment of type 1 to the item in hand.</p>
+                    <h3>Notes:</h3>
+                    <p>Enchantment IDs must be valid, and the item in hand must be enchantable (non-stackable items only). If no item is held, the command will not work.</p>
+                    <h3>Common Issues:</h3>
+                    <p>If the enchantment ID is invalid, or if the player tries to enchant an incompatible item, an error message will be displayed.</p>
+                </div>
+            </div>
+
+            <div id="command-spawn" class="wiki-page">
+                <div class="content-box">
+                    <h2>/spawn</h2>
+                    <p><strong>Command Name:</strong> /spawn<br>
+                        <strong>Description:</strong> The /spawn command is used to generate a specified entity at the player’s location or at specified coordinates. This is useful for testing or setting up scenarios involving mobs or animals.
+                    </p>
+                    <h3>Usage:</h3>
+                    <p><strong>Basic Format:</strong> /spawn <entity> [x] [y] [z]</p>
+                    <ul>
+                        <li><strong>[entity]:</strong> The type of entity you want to spawn (e.g., "zombie", "sheep").</li>
+                        <li><strong>[x], [y], [z]:</strong> Optional coordinates for where to spawn the entity. If omitted, the entity will spawn at the player's current location.</li>
+                    </ul>
+                    <p><strong>Example:</strong> /spawn zombie - This spawns a Zombie at the player’s current location.</p>
+                    <h3>Notes:</h3>
+                    <p>Valid entities include common mobs like sheep, pigs, zombies, and skeletons. If coordinates are provided, ensure they are within the world’s boundaries.</p>
+                    <h3>Common Issues:</h3>
+                    <p>If the entity name is invalid, or if coordinates are out of range, an error message will be displayed.</p>
+                </div>
+            </div>
+
+            <!-- Features Category Page -->
+            <div id="features" class="wiki-page">
+                <div class="content-box">
+                    <h2>Features</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('feature-house-preset')">House Preset</a></li>
+                        <li><a href="#" onclick="showPage('feature-top-scores')">Top Scores Screen</a></li>
+                        <li><a href="#" onclick="showPage('feature-f3-debug')">Improved F3 Debug Information</a></li>
+                        <li><a href="#" onclick="showPage('feature-screenshot')">Screenshot Functionality (F2)</a></li>
+                        <li><a href="#" onclick="showPage('feature-sprinting')">Sprinting System</a></li>
+                        <li><a href="#" onclick="showPage('feature-quiver-shield-slot')">Quiver and Shield Slot</a></li>
+                        <li><a href="#" onclick="showPage('feature-rarity-tooltips')">Rarity and Tooltips</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Feature Detail Pages -->
+            <div id="feature-house-preset" class="wiki-page">
+                <div class="content-box">
+                    <h2>House Preset</h2>
+                    <p><strong>Type:</strong> Structure Preset<br>
+                        <strong>Stackable:</strong> No<br>
+                        <strong>Description:</strong> The House Preset is a feature that allows players to quickly generate a house with predefined styles. This tool is designed to give players a variety of architectural options, from simple cottages to more fortified homes.
+                    </p>
+                    <h3>Structure Generation:</h3>
+                    <p><strong>Size:</strong> The generated house typically covers a 7x7 block area and is 6 blocks tall, providing a compact but functional living space.</p>
+                    <p><strong>Entrance:</strong> The house features a 1x2 block entrance, usually centered on one of the walls for easy access.</p>
+                    <h3>Structure Details:</h3>
+                    <ul>
+                        <li><strong>Walls:</strong>
+                            <ul>
+                                <li>Brick House: Uses Bricks, providing a classic, sturdy appearance.</li>
+                                <li>Mud Brick House: Constructed with Mud Bricks for a rustic, earthy look.</li>
+                                <li>Cobbled Brick House: Built using Cobbled Brick, offering a rugged, durable aesthetic.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Floors:</strong>
+                            <ul>
+                                <li>Brick House: Polished Blocks or Polished Tiles.</li>
+                                <li>Mud Brick House: Compressed Dirt or Packed Mud.</li>
+                                <li>Cobbled Brick House: A mix of Mossy Cobblestone, Polished Tiles, Stone, and Cobblestone.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Windows:</strong> Made of Glass or Tinted Glass, depending on the preset, with an option for a windowless design using the same material as the walls.</li>
+                        <li><strong>Roof:</strong> The roof materials vary, typically using Stone Slabs, Wooden Planks, or Cobbled Stone for durability and aesthetic appeal.</li>
+                    </ul>
+                    <h3>Usage:</h3>
+                    <p>The House Preset is ideal for players looking for a quick shelter solution that still offers customization. Each style provides a different look, fitting various environments and player tastes.</p>
+                    <h3>Fun Fact:</h3>
+                    <p>The House Preset concept draws inspiration from modular homes, where sections are pre-built and assembled on-site.</p>
+                </div>
+            </div>
+
+            <div id="feature-top-scores" class="wiki-page">
+                <div class="content-box">
+                    <h2>Top Scores Screen</h2>
+                    <p><strong>Description:</strong> The Top Scores screen displays the highest scores achieved by players in the game. It allows players to see how they compare to others and provides motivation to achieve higher scores.</p>
+                    <h3>Features:</h3>
+                    <p><strong>Top 10 Scores:</strong> Displays the top 10 scores, including the player’s name, score, time alive, and the date the score was achieved.</p>
+                    <p><strong>Tooltip:</strong> Hovering over a score entry shows the exact date and time it was achieved in the format "Month day, Year @ time."</p>
+                    <h3>Usage:</h3>
+                    <p><strong>Access:</strong> Accessible from the main menu via the "Top Scores" button.</p>
+                    <p><strong>Navigation:</strong> A back button allows returning to the main menu.</p>
+                </div>
+            </div>
+
+            <div id="feature-f3-debug" class="wiki-page">
+                <div class="content-box">
+                    <h2>Improved F3 Debug Information</h2>
+                    <p><strong>Description:</strong> The F3 debug screen has been enhanced with more detailed information, including:</p>
+                    <ul>
+                        <li><strong>OS and CPU Info:</strong> Displays the operating system, CPU type, and architecture, helping players and developers understand the environment in which the game is running.</li>
+                        <li><strong>Memory Usage:</strong> Shows detailed memory usage stats, including free and allocated memory.</li>
+                        <li><strong>Player Coordinates:</strong> Provides the exact XYZ coordinates of the player.</li>
+                        <li><strong>Facing Direction:</strong> Displays the player’s facing direction in simple terms (e.g., north, south) along with yaw and pitch values.</li>
+                        <li><strong>Screen Resolution:</strong> Shows the current screen resolution and whether the game is in fullscreen or windowed mode.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="feature-screenshot" class="wiki-page">
+                <div class="content-box">
+                    <h2>Screenshot Functionality (F2)</h2>
+                    <p><strong>Description:</strong> Pressing F2 in-game now takes a screenshot of the current screen, saving it to a dedicated folder. This allows players to capture and share their experiences.</p>
+                    <h3>Usage:</h3>
+                    <p><strong>Default Key:</strong> Press F2 to take a screenshot.</p>
+                    <p><strong>File Location:</strong> Screenshots are saved in the "screenshots" folder within the game directory.</p>
+                </div>
+            </div>
+
+            <div id="feature-sprinting" class="wiki-page">
+                <div class="content-box">
+                    <h2>Sprinting System</h2>
+                    <p><strong>Description:</strong> Sprinting allows players to move faster than walking by double-tapping the forward key. This feature is useful for covering large distances quickly or escaping from danger.</p>
+                    <h3>Usage:</h3>
+                    <p><strong>How to Sprint:</strong> Double-tap the forward key (W by default) to start sprinting.</p>
+                    <p><strong>Stamina:</strong> Sprinting consumes stamina. When stamina runs out, the player will be forced to stop sprinting until it recovers.</p>
+                    <h3>Stamina Indicator:</h3>
+                    <p><strong>Hearts Effect:</strong> When stamina is low, the fourth heart in the player’s health bar will flash, indicating the need to rest.</p>
+                </div>
+            </div>
+
+            <div id="feature-quiver-shield-slot" class="wiki-page">
+                <div class="content-box">
+                    <h2>Quiver and Shield Slot</h2>
+                    <p><strong>Description:</strong> New slots for Quivers and Shields have been added to the player’s inventory, allowing for more strategic gameplay.</p>
+                    <h3>Details:</h3>
+                    <p><strong>Quiver Slot:</strong> A dedicated slot for Quivers (slot 36). If a Quiver is equipped, arrows can be stored in an adjacent slot (slot 37).</p>
+                    <p><strong>Shield Slot:</strong> Slot 38 is reserved for Shields. Shields have a chance to block all damage when equipped.</p>
+                    <p><strong>Icon States:</strong> The Quiver icon changes based on its contents: empty, half-full, or full.</p>
+                    <h3>Usage:</h3>
+                    <p><strong>Equip a Quiver:</strong> Place a Quiver in slot 36 to activate it.</p>
+                    <p><strong>Use a Shield:</strong> Place a Shield in slot 38 for a chance to block incoming damage.</p>
+                </div>
+            </div>
+
+            <div id="feature-rarity-tooltips" class="wiki-page">
+                <div class="content-box">
+                    <h2>Rarity and Tooltips</h2>
+                    <p><strong>Description:</strong> Items now display tooltips when selected in the hotbar, showing their name and any enchantments. Rarity colors have been added to item names to indicate their value.</p>
+                    <h3>Rarity Colors:</h3>
+                    <ul>
+                        <li><strong>Common:</strong> Default color, used for standard items.</li>
+                        <li><strong>Uncommon:</strong> Light green text for items that are slightly harder to obtain.</li>
+                        <li><strong>Rare:</strong> Blue text for valuable items.</li>
+                        <li><strong>Epic:</strong> Purple text for highly valuable, rare items.</li>
+                    </ul>
+                    <h3>Enchantments:</h3>
+                    <p><strong>Rainbow Text:</strong> Enchantments are displayed in rainbow-colored text to make them stand out.</p>
+                    <h3>Tooltips:</h3>
+                    <p><strong>Background:</strong> Tooltips have a semi-transparent black background for better readability.</p>
+                </div>
+            </div>
+
+            <!-- Mobs Category Page -->
+            <div id="mobs" class="wiki-page">
+                <div class="content-box">
+                    <h2>Mobs</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('mob-zombie')">Zombie</a></li>
+                        <li><a href="#" onclick="showPage('mob-creeper')">Creeper</a></li>
+                        <li><a href="#" onclick="showPage('mob-skeleton')">Skeleton</a></li>
+                        <li><a href="#" onclick="showPage('mob-spider')">Spider</a></li>
+                    </ul>
+                </div>
+            </div>
+<!-- Mob Detail Pages -->
+<div id="mob-zombie" class="wiki-page">
+    <div class="content-box">
+        <h2>Zombie</h2>
+        <p>A hostile mob that attacks players. Zombies spawn in dark areas and move slowly. They can inflict significant damage, especially in groups.</p>
+    </div>
+</div>
+
+<div id="mob-creeper" class="wiki-page">
+    <div class="content-box">
+        <h2>Creeper</h2>
+        <p>A mob that explodes when close to players. Creepers approach silently and detonate, causing damage to both players and their surroundings.</p>
+    </div>
+</div>
+
+<div id="mob-skeleton" class="wiki-page">
+    <div class="content-box">
+        <h2>Skeleton</h2>
+        <p>A hostile mob that shoots arrows at players from a distance. Skeletons fire arrows seemingly from nowhere, posing a threat in open areas.</p>
+    </div>
+</div>
+
+<div id="mob-spider" class="wiki-page">
+    <div class="content-box">
+        <h2>Spider</h2>
+        <p>A mob that can jump and lunge at players. Spiders are fast and can jump to close distances, making them a challenge in both open and confined spaces.</p>
+    </div>
+</div>
+
+
+            <!-- Tips & Tricks Category Page -->
+            <div id="tips-tricks" class="wiki-page">
+                <div class="content-box">
+                    <h2>Tips & Tricks</h2>
+                    <ul>
+                        <li><a href="#" onclick="showPage('tip-carry-sword')">Always carry a sword</a></li>
+                        <li><a href="#" onclick="showPage('tip-use-pickaxe')">Use a pickaxe for mining</a></li>
+                        <li><a href="#" onclick="showPage('tip-build-shelter')">Build a shelter</a></li>
+                        <li><a href="#" onclick="showPage('tip-keep-furnace')">Keep a furnace</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tip Detail Pages -->
+            <div id="tip-carry-sword" class="wiki-page">
+                <div class="content-box">
+                    <h2>Always carry a sword</h2>
+                    <p>Having a sword on hand helps in defending against mobs. A sword provides a quick way to fend off hostile creatures, especially during nighttime or in caves.</p>
+                </div>
+            </div>
+
+            <div id="tip-use-pickaxe" class="wiki-page">
+                <div class="content-box">
+                    <h2>Use a pickaxe for mining</h2>
+                    <p>Pickaxes are more efficient than other tools for mining ores and stone. Using the correct tool speeds up resource gathering and reduces wear on the tool.</p>
+                </div>
+            </div>
+
+            <div id="tip-build-shelter" class="wiki-page">
+                <div class="content-box">
+                    <h2>Build a shelter</h2>
+                    <p>A shelter provides protection from hostile mobs and the environment. Building a secure base early on is essential for survival, especially at night.</p>
+                </div>
+            </div>
+
+            <div id="tip-keep-furnace" class="wiki-page">
+                <div class="content-box">
+                    <h2>Keep a furnace</h2>
+                    <p>A furnace is essential for smelting ores and cooking food. Always having a furnace on hand allows you to process materials and prepare food while exploring.</p>
+                </div>
+            </div>
+
+        </main>
     </div>
 
-    <audio id="audio" src="files/click.ogg"></audio>
+    <footer>
+        <p>&copy; 2024 Forever Indev Wiki. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.wiki-page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function searchContent() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const pages = document.querySelectorAll('.wiki-page');
+
+            pages.forEach(page => {
+                const content = page.textContent.toLowerCase();
+                if (content.includes(query)) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>

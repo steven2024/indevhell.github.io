@@ -16,7 +16,7 @@
             <a href="gallery.html" class="btn top">Gallery</a>
         </div>
     </nav>
-    <img class="logo" src="screenshots/logo.png">
+    <img class="logo" src="files/logo.png">
 
     <div class="wrap">
         <div id="content" style="display: flex; gap: 1em;">
@@ -65,5 +65,17 @@
     </div>
 
     <audio id="audio" src="files/click.ogg"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio');
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    audio.currentTime = 0; // Rewind to the start
+                    audio.play();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
